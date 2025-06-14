@@ -2,7 +2,7 @@ use std::embedded_curve_ops::EmbeddedCurvePoint as Point;
 use std::embedded_curve_ops::EmbeddedCurveScalar as Scalar;
 use ec;
 use noir_bigcurve::BigCurve;
-use noir_bigcurve::curves::bn254::{BN254, BN254_Fq_Params};
+use noir_bigcurve::curves::bn254::{BN254, BN254Params};
 use nodash::pack_bytes;
 
 global SQRT_NEG_3: Field = 8815841940592487684786734430012312169832938914291687956923;

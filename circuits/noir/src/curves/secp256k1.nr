@@ -1,7 +1,7 @@
 use nodash::array::pack_bytes;
 use std::hash::poseidon2::Poseidon2::hash;
 use noir_bigcurve::curves::secp256k1::{
-    Secp256k1, Secp256k1_Params, Secp256k1Fq, Secp256k1Fr, Secp256k1Scalar,
+    Secp256k1, Secp256k1_Fq, Secp256k1_Fr, Secp256k1Scalar,
 };
 use noir_bigcurve::scalar_field::ScalarField;
 use bignum::BigNum;
@@ -13,88 +13,88 @@ comptime global DST_PRIME: [u8; 50] = [
     95, 82, 79, 95, 49,
 ];
 
-global K1_0: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K1_0: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0xe38e38e38e38e38e38e38daaaaa8c7,
     0xe38e38e38e38e38e38e38e38e38e38,
     0x8e38,
 ]);
-global K1_1: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K1_1: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x95d2fc0bf63b92dfff1044f17c6581,
     0xd4c80bc321d5b9f315cea7fd44c5d5,
     0x7d3,
 ]);
-global K1_2: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K1_2: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x506144037c40314ecbd0b53d9dd262,
     0x328d23f234e6e2a413deca25caece4,
     0x534c,
 ]);
-global K1_3: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K1_3: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0xe38e38e38e38e38e38e38daaaaa88c,
     0xe38e38e38e38e38e38e38e38e38e38,
     0x8e38,
 ]);
 
-global K2_0: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K2_0: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0xcd409542f8487d9fe6b745781eb49b,
     0x71193d94918a9ca34ccbb7b640dd86,
     0xd357,
 ]);
-global K2_1: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K2_1: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0xd36b641f5e41bbc52a56612a8c6d14,
     0xc6f64383dc1df7c4b2d51b54225406,
     0xedad,
 ]);
 
-global K3_0: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K3_0: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x684bda12f684bda12f684b8e38e23c,
     0x12f684bda12f684bda12f684bda12f,
     0x4bda,
 ]);
-global K3_1: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K3_1: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x7ab046d686da6fdffc90fc201d71a3,
     0xc32d5cb7c0fa9d0a54b12a0a6d564,
     0xc75e,
 ]);
-global K3_2: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K3_2: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x2830a201be2018a765e85a9ecee931,
     0x194691f91a73715209ef6512e57672,
     0x29a6,
 ]);
-global K3_3: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K3_3: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0xa12f684bda12f684bda12f38e38d84,
     0x4bda12f684bda12f684bda12f684bd,
     0x2f68,
 ]);
 
-global K4_0: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K4_0: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0xfffffffffffffffffffffefffff93b,
     0xffffffffffffffffffffffffffffff,
     0xffff,
 ]);
-global K4_1: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K4_1: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x67c1bfc8e8d978dfb425d2685c2573,
     0x534bb8bdb49fd5e9e6632722c29894,
     0x7a06,
 ]);
-global K4_2: Secp256k1Fq = Secp256k1Fq::from_slice([
+global K4_2: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x3d21162f0d6299a7bf8192bfd2a76f,
     0xaa716545ca2cf3a70c3fa8fe337e0a,
     0x6484,
 ]);
 
-global Z: Secp256k1Fq = Secp256k1Fq::from_slice([
+global Z: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0xfffffffffffffffffffffefffffc24,
     0xffffffffffffffffffffffffffffff,
     0xffff,
 ]);
-global A: Secp256k1Fq = Secp256k1Fq::from_slice([
+global A: Secp256k1_Fq = Secp256k1_Fq::from_limbs([
     0x53d363cb6f0e5d405447c01a444533,
     0x31abdd661adca08a5558f0f5d272e9,
     0x3f87,
 ]);
-global B: Secp256k1Fq = Secp256k1Fq::from_slice([0x6eb, 0, 0]);
+global B: Secp256k1_Fq = Secp256k1_Fq::from_limbs([0x6eb, 0, 0]);
 
-comptime global ONE: Secp256k1Fq = Secp256k1Fq::one();
+comptime global ONE: Secp256k1_Fq = Secp256k1_Fq::one();
 
 pub fn hash_to_curve<let N: u32>(msg: [u8; N]) -> Secp256k1 {
     let u = hash_to_field(msg);
@@ -122,8 +122,8 @@ pub fn hash_to_field<let N: u32>(msg: [u8; N]) -> Secp256k1 {
     BigCurve { x: u0_bytes_to_registers, y: u1_bytes_to_registers, is_infinity: false }
 }
 
-fn bytes_to_registers(ui: [u8; 48]) -> Secp256k1Fq {
-    let shift = Secp256k1Fq::from_slice([0, 0x100, 0]);
+fn bytes_to_registers(ui: [u8; 48]) -> Secp256k1_Fq {
+    let shift = Secp256k1_Fq::from_limbs([0, 0x100, 0]);
     let mut small = [0 as u8; 32];
     let mut big = [0 as u8; 32];
 
@@ -133,8 +133,8 @@ fn bytes_to_registers(ui: [u8; 48]) -> Secp256k1Fq {
     for i in 0..32 {
         big[i] = ui[i];
     }
-    let res = Secp256k1Fq::from_be_bytes(big);
-    res * shift + Secp256k1Fq::from_be_bytes(small)
+    let res = Secp256k1_Fq::from_be_bytes(big);
+    res * shift + Secp256k1_Fq::from_be_bytes(small)
 }
 
 pub fn expand_message_xmd<let N: u32>(msg: [u8; N]) -> [u8; 96] {
@@ -211,9 +211,9 @@ fn hash_b(b_idx: u8, b: [u8; 32]) -> [u8; 32] {
 
 
 // Returns point E' isogeneous to secp256k1.
-pub fn map_to_curve(u: Secp256k1Fq) -> Secp256k1 {
+pub fn map_to_curve(u: Secp256k1_Fq) -> Secp256k1 {
     let tv1 = ONE / (Z * Z * u * u * u * u + Z * u * u);
-    let x1 = (B.neg() / A) * (ONE + tv1);
+    let x1 = (-B / A) * (ONE + tv1);
 
     let gx1 = x1 * x1 * x1 + A * x1 + B;
     let x2 = Z * u * u * x1;
@@ -226,27 +226,27 @@ pub fn map_to_curve(u: Secp256k1Fq) -> Secp256k1 {
     let y_sign: u1 = (ybyte[0] as Field).to_le_bits::<8>()[0];
 
     if u_sign != y_sign {
-        y = y.neg();
+        y = -y;
     }
 
     BigCurve { x, y, is_infinity: false }
 }
 
 fn select_xy(
-    x1: Secp256k1Fq,
-    x2: Secp256k1Fq,
-    gx1: Secp256k1Fq,
-    gx2: Secp256k1Fq,
-) -> (Secp256k1Fq, Secp256k1Fq) {
+    x1: Secp256k1_Fq,
+    x2: Secp256k1_Fq,
+    gx1: Secp256k1_Fq,
+    gx2: Secp256k1_Fq,
+) -> (Secp256k1_Fq, Secp256k1_Fq) {
     let gx1_sqrt = unsafe { gx1.__tonelli_shanks_sqrt() };
     let gx2_sqrt = unsafe { gx2.__tonelli_shanks_sqrt() };
 
     let gx1_is_square = gx1_sqrt.is_some();
 
-    let x: Secp256k1Fq = if gx1_is_square { x1 } else { x2 };
+    let x: Secp256k1_Fq = if gx1_is_square { x1 } else { x2 };
     let y = gx1_sqrt.xor(gx2_sqrt).unwrap();
 
-    let y_preimage: Secp256k1Fq = if gx1_is_square { gx1 } else { gx2 };
+    let y_preimage: Secp256k1_Fq = if gx1_is_square { gx1 } else { gx2 };
 
     // Constrain out-of-circuit root computation.
     let y_squared = y * y;
@@ -271,18 +271,18 @@ pub fn iso_map(p: Secp256k1) -> Secp256k1 {
     BigCurve { x, y, is_infinity: false }
 }
 
-fn x_num(x: Secp256k1Fq, x2: Secp256k1Fq, x3: Secp256k1Fq) -> Secp256k1Fq {
+fn x_num(x: Secp256k1_Fq, x2: Secp256k1_Fq, x3: Secp256k1_Fq) -> Secp256k1_Fq {
     K1_0 + K1_1 * x + K1_2 * x2 + K1_3 * x3
 }
 
-fn x_den(x: Secp256k1Fq, x2: Secp256k1Fq) -> Secp256k1Fq {
+fn x_den(x: Secp256k1_Fq, x2: Secp256k1_Fq) -> Secp256k1_Fq {
     x2 + K2_1 * x + K2_0
 }
 
-fn y_num(x: Secp256k1Fq, x2: Secp256k1Fq, x3: Secp256k1Fq) -> Secp256k1Fq {
+fn y_num(x: Secp256k1_Fq, x2: Secp256k1_Fq, x3: Secp256k1_Fq) -> Secp256k1_Fq {
     K3_0 + K3_1 * x + K3_2 * x2 + K3_3 * x3
 }
 
-fn y_den(x: Secp256k1Fq, x2: Secp256k1Fq, x3: Secp256k1Fq) -> Secp256k1Fq {
+fn y_den(x: Secp256k1_Fq, x2: Secp256k1_Fq, x3: Secp256k1_Fq) -> Secp256k1_Fq {
     K4_0 + K4_1 * x + K4_2 * x2 + x3
 }

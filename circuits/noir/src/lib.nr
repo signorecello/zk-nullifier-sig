@@ -1,6 +1,6 @@
 use nodash::array::pack_bytes;
 use noir_bigcurve::{BigCurve, BigCurveTrait, CurveParamsTrait};
-use noir_bigcurve::BigNumTrait;
+use bignum::BigNum;
 use noir_bigcurve::scalar_field::ScalarField;
 use std::hash::poseidon2::Poseidon2::hash;
 
@@ -45,7 +45,7 @@ trait PlumeVerifier<CurveParams, BN, let NScalarSlices: u32, let L: u32> {
 
 impl<CurveParams, BN, let NScalarSlices: u32, let L: u32> PlumeVerifier<CurveParams, BN, NScalarSlices, L> for Plume<CurveParams, BN, NScalarSlices, L>
 where
-    BN: BigNumTrait,
+    BN: BigNum,
     CurveParams: CurveParamsTrait<BN>,
 {
     fn new(
@@ -103,11 +103,11 @@ where
 
     fn compress_ec_point(self, point: BigCurve<BN, CurveParams>) -> [u8; COMPRESSED_SIZE_BYTES] {
         let x_bn: BN = point.x;
-        let x: [u8; 32] = x_bn.to_le_bytes();
+        let x = x_bn.to_le_bytes();
         let mut compressed = [0 as u8; COMPRESSED_SIZE_BYTES];
 
         let y_bn: BN = point.y;
-        let y: [u8; 32] = y_bn.to_le_bytes();
+        let y = y_bn.to_le_bytes();
         let sign = y[0] & 1;
         compressed[0] = sign + 2; // convention to encode `y` as 02 or 03
         for i in 0..32 {
